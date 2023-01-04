@@ -202,8 +202,11 @@ CSS의 C는 Cascading. CSS는 브라우저가 위에서부터 아래로 읽는�
 CSS로 pointing 한 Tag는 개수에 상관없이 모두 적용된다.
 <div>, <p>와 같은 box는 옆에 다른 element가 올 수 없지만 <span>, <a>, <img>는 올 수 있다.
 
-block : 옆에 다른 element 올 수 없는 element
-ex) <div>, <p>
+block : 같은 줄에 여러 element 올 수 없는 element
+ex) <div>, <p>, <address>...
 
-inline : 
+inline : 블럭의 반대로 같은 줄에 여러개 element가 올 수 있다.
+ex) <span>, <a>, <img>, <link> ...
+
+block이 아닌 inline을 기억하는 것이 편하다.
 
