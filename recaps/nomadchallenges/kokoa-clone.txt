@@ -1,212 +1,298 @@
+#1 INTRODUCTION
 #1.5 What is Website
 
-Website is just Text
+    Website is just Text
 
-website is made of 2 or 3 language
-first language is HTML for content
-seond language is CSS for design
-last language is Javascript for interactivity
+    website is made of 2 or 3 language
+    first language is HTML for content
+    seond language is CSS for design
+    last language is Javascript for interactivity
 
-HTML, CSS are not programming language
+    HTML, CSS are not programming language
 
 #1.6 What is HTML
 
-HTML means Hypertext Marrkup language
-Browser doesn't understand human language
-we need to explain browser how is our browser structure with HTML
-HTML is only language that can explain what is the content of website to the browser
+    HTML means Hypertext Marrkup language
+    Browser doesn't understand human language
+    we need to explain browser how is our browser structure with HTML
+    HTML is only language that can explain what is the content of website to the browser
 
 #1.7 What is CSS
 
-CSS means Cascadin Style Sheets
-CSS should be used with HTML
-CSS is to tell browser how does website content look like
+    CSS means Cascadin Style Sheets
+    CSS should be used with HTML
+    CSS is to tell browser how does website content look like
 
 #1.8 What is Javascript
 
-Javascript is brain of website
-Javascript is programming language
+    Javascript is brain of website
+    Javascript is programming language
 
+#2LEARNING HTML
 #2.0 Our First HTML File
 
-Folder name should always be lowercase!
-file name also should always be lowercase!
+    Folder name should always be lowercase!
+    file name also should always be lowercase!
 
 #2.1 Setup and Errors
 
-VSC Extension Program
-- WakeTime 
-- Community Material Theme
-- Material Icon Theme
-- Prettier
+    VSC Extension Program
+    - WakeTime 
+    - Community Material Theme
+    - Material Icon Theme
+    - Prettier
 
-Browser doesn't tell the HTML file has error
+    Browser doesn't tell the HTML file has error
 
 #2.2 Our First HTML Tag
 
-Browser knows content between HTML Tag
-write "/" at the beginning of close Tag 
-ex) <div></div>
-HTML Tag must be closed with close Tag
+    Browser knows content between HTML Tag
+    write "/" at the beginning of close Tag 
+    ex) <div></div>
+    HTML Tag must be closed with close Tag
 
-h1 tag means header No.1
+    h1 tag means header No.1
 
-Do not remember or memorize HTML Tag
+    Do not remember or memorize HTML Tag
 
 #2.3 More Tags and Prettier
 
-two kinds of list on HTML
-- Orderd list : 12345, ex) <ol></ol>
-- Unordered list : 15243 , ex) <ul></ul>
+    two kinds of list on HTML
+    - Orderd list : 12345, ex) <ol></ol>
+    - Unordered list : 15243 , ex) <ul></ul>
 
-command(ctrl) + D make cursur to same words
+    command(ctrl) + D make cursur to same words
 
-Prettier Setting 
-- Settings - format on save Check
+    Prettier Setting 
+    - Settings - format on save Check
 
 #2.4 Tag Attributes
 
-Attributes is basically add information to a text.
-Any attributes can be added.
-But the browser is not going to understand not exist attributes.
-attributes can only be combine with the tag that has that attribute.
-some tags share attribute. some tags do not.
-Attributes must always use double quotes. 
-ex) <div id="box"> </div>
+    Attributes is basically add information to a text.
+    Any attributes can be added.
+    But the browser is not going to understand not exist attributes.
+    attributes can only be combine with the tag that has that attribute.
+    some tags share attribute. some tags do not.
+    Attributes must always use double quotes. 
+    ex) <div id="box"> </div>
 
 
-<a> tag means anchor, like link.
-Anchor is basically a way going to another website.
-href attribute means HTTP reference. href can only be combine with anchor.
-target attribute determines where href is opened.
-ex) <a href="http://goggle.com">Go to google.com</a>
+    <a> tag means anchor, like link.
+    Anchor is basically a way going to another website.
+    href attribute means HTTP reference. href can only be combine with anchor.
+    target attribute determines where href is opened.
+    ex) <a href="http://goggle.com">Go to google.com</a>
 
-<img/> is img tag.
-it doesn't have closing tag like </img>. 
-it is self closing tag. looks like this <img />
-because img doesn't have content.
-the only img tag has src attribute. 
-the src need image source link and puts it in the image
+    <img/> is img tag.
+    it doesn't have closing tag like </img>. 
+    it is self closing tag. looks like this <img />
+    because img doesn't have content.
+    the only img tag has src attribute. 
+    the src need image source link and puts it in the image
 
 #2.5 More Tags and Head
 
-local image source should be write path notation like <img src="img/logo.img" />
+    local image source should be write path notation like <img src="img/logo.img" />
 
-HTML has rule that must be followed.
-1. first line must be <!DOCTYPE html>
-    it means informing the browser that this file is HTML file
-2. between <html> and </html> is going to be html code
-3. websites have two parts. head and body
-    - head is where configure the website. do setting invisible settings.
-        ex) <title>Home - My first website.</title> is shown title on tab 
-    - body is where the content is shown we put on the website. 
+    HTML has rule that must be followed.
+    1. first line must be <!DOCTYPE html>
+        it means informing the browser that this file is HTML file
+    2. between <html> and </html> is going to be html code
+    3. websites have two parts. head and body
+        - head is where configure the website. do setting invisible settings.
+            ex) <title>Home - My first website.</title> is shown title on tab 
+        - body is where the content is shown we put on the website. 
 
 #2.6 Its All About the Head 
 
-<meta> tags are means extra data. they have two attribute. name and content.
-meta tags are self closing tags.
+    <meta> tags are means extra data. they have two attribute. name and content.
+    meta tags are self closing tags.
 
 #2.7 More Tags
 
-Use MDN when search html,css,js
+    Use MDN when search html,css,js
 
-Do not memorize all tags and attributes!
+    Do not memorize all tags and attributes!
 
 #2.8 Form Tags 
 
-<form> tag is submiting information group of input or file ...
-input tag has many types.
+    <form> tag is submiting information group of input or file ...
+    input tag has many types.
 
 #2.9 More Tags and IDs
 
-label works together with the input.
-<input> tag should have id attribute. 
-for="" in <label> and id="" in <input> must be same.
-if click the label we can type in input.
+    label works together with the input.
+    <input> tag should have id attribute. 
+    for="" in <label> and id="" in <input> must be same.
+    if click the label we can type in input.
 
-id must be unique in the whole document.
-the purpose using id is to identify the element when using scripting or css.
-All element have only one id.
+    id must be unique in the whole document.
+    the purpose using id is to identify the element when using scripting or css.
+    All element have only one id.
 
 #2.10 Semantic HTML
 
-<div> tag is most generic box container.
-boxes can not exist next to each other.
+    <div> tag is most generic box container.
+    boxes can not exist next to each other.
 
-Semantic tag means basically the meaning tracking by looking a document
-ex) <header>, <main>, <footer>, <address>...
-those tags equal <div>. but we can easily understand the meaning.
+    Semantic tag means basically the meaning tracking by looking a document
+    ex) <header>, <main>, <footer>, <address>...
+    those tags equal <div>. but we can easily understand the meaning.
 
-<span> is for short text
-<p> means paragraph. it is for long text.
+    <span> is for short text
+    <p> means paragraph. it is for long text.
 
 #2.11 Recap
 
-HTML is the bone. CSS is the muscle. Javascript is the brain.
-HTML is made of tags. browser can't understand undefined tag.
+    HTML is the bone. CSS is the muscle. Javascript is the brain.
+    HTML is made of tags. browser can't understand undefined tag.
 
-Tag consist of opening tag and closing tag.
-A closing tag starts with "/" and must be same words as opening tag
-ex) <div> </div>
+    Tag consist of opening tag and closing tag.
+    A closing tag starts with "/" and must be same words as opening tag
+    ex) <div> </div>
 
-tags can have many attributes. 
-Attributes must always use double quotes. 
-ex) <div id="box"> </div>
+    tags can have many attributes. 
+    Attributes must always use double quotes. 
+    ex) <div id="box"> </div>
 
-any tags can have id.
-some attribute can be used for every tags. but some attribute can be used for certain tag.
+    any tags can have id.
+    some attribute can be used for every tags. but some attribute can be used for certain tag.
 
-<div> is most generic box container.
-but we want to have meaning when we writing the code.
-We understand by read the code.
-so we need to use segmantic tag.
+    <div> is most generic box container.
+    but we want to have meaning when we writing the code.
+    We understand by read the code.
+    so we need to use segmantic tag.
 
-head is configure the website. it is invisible on website.
+    head is configure the website. it is invisible on website.
 
-use more often tags are <header>, <main>, <footer>, <navigation>, <sidebar>, 
+    use more often tags are <header>, <main>, <footer>, <navigation>, <sidebar>, 
 
+#3 LEARNING CSS
 #3.0 How to Add CSS to HTML
 
-1. put <style> in <head>
+    CSS를 추가하는 방법은 2가지가 있다.
 
-2. put <link> in <head>
-    ex) <link rel="stylesheet" href="style.css" />
-    
-Best way is 2.
+    1. put <style> in <head>
+
+    2. put <link> in <head>
+        ex) <link rel="stylesheet" href="style.css" />
+        
+    Best way is 2.
 
 #3.1 Writing Our First CSS Lines
 
-CSS will point to an HTML code.
+    CSS will point to an HTML code.
 
-pointing is called selector.
-selector has many propertys.
-to group propertys using curly bracket { }
+    pointing is called selector.
+    selector has many propertys.
+    to group propertys using curly bracket { }
 
-CSS propertys has the following syntax.
-    1. property name can't contain spaces, underbar(_) and slash(/)
-    2. close by semicolon(;)
-        ex)property-name: property-value;
-        ex)font-size: 20px;
+    CSS propertys has the following syntax.
+        1. property name can't contain spaces, underbar(_) and slash(/)
+        2. close by semicolon(;)
+            ex)property-name: property-value;
+            ex)font-size: 20px;
 
-    3. value에는 아무거나 넣을 수 있지만 속성에 맞는 값을 넣어야 브라우저에서 작동된다.
+        3. value에는 아무거나 넣을 수 있지만 속성에 맞는 값을 넣어야 브라우저에서 작동된다.
 
-모든 property를 다 기억할 필요는 없다
+    모든 property를 다 기억할 필요는 없다
 
 #3.2 What Does Cascading Mean
 
-CSS의 C는 Cascading. CSS는 브라우저가 위에서부터 아래로 읽는다는 의미.
-따라서 코드가 겹칠 때 가장 마지막 코드가 적용된다.
+    CSS의 C는 Cascading. CSS는 브라우저가 위에서부터 아래로 읽는다는 의미.
+    따라서 코드가 겹칠 때 가장 마지막 코드가 적용된다.
 
 #3.3 Blocks and Inlines
 
-CSS로 pointing 한 Tag는 개수에 상관없이 모두 적용된다.
-<div>, <p>와 같은 box는 옆에 다른 element가 올 수 없지만 <span>, <a>, <img>는 올 수 있다.
+    CSS로 pointing 한 Tag는 개수에 상관없이 모두 적용된다.
 
-block : 같은 줄에 여러 element 올 수 없는 element
-ex) <div>, <p>, <address>...
+    block : 같은 줄에 여러 element 올 수 없는 element
+    ex) <div>, <p>, <address>...
 
-inline : 블럭의 반대로 같은 줄에 여러개 element가 올 수 있다.
-ex) <span>, <a>, <img>, <link> ...
+    inline : 블럭의 반대로 같은 줄에 여러개 element가 올 수 있다.
+    ex) <span>, <a>, <img>, <link> ...
 
-block이 아닌 inline을 기억하는 것이 편하다.
+    block이 아닌 inline을 기억하는 것이 편하다.
 
+#3.4 Margin Part One
+
+    block과 inline은 display property를 사용해 서로 바꿀 수 있다
+    ex) span { display: block; }, div { display: inline; }
+
+    inline은 height, width property를 가질 수 없다.
+    inline don't have height, width property.
+
+    boxes have three propertys ( margin, border, padding )
+
+    margin is space from the border of the box to the outside.
+
+#3.5 Margin Part Two
+
+    값 1개일때 모든방향 적용
+        ex) margin: 10px;
+    값 2개일떄 위아래, 오른쪽아래 적용.
+        ex) margin : vertical(top, bottmom) horizontal(right, left);
+    값 4개일때 clockwise 순서대로 적용. 
+        ex) margin : top right left bottm; 
+
+    collapsing margins :  https://velog.io/@raram2/CSS-%EB%A7%88%EC%A7%84-%EC%83%81%EC%87%84Margin-collapsing-%EC%9B%90%EB%A6%AC-%EC%99%84%EB%B2%BD-%EC%9D%B4%ED%95%B4
+
+#3.6 Paddings and IDs
+
+    padding is space from the border of the box to the inside.
+
+    값 개수에 따라 적용되는 방향은 margin과 동일
+
+    id를 가리킬떄는 #id {} 형태로 사용사용
+
+#3.7 Border 
+
+    border는 거의 한종류만 사용
+
+    * selector는 모든 element에 적용됨
+
+#3.8 Classes
+
+    inline은 좌 우로만 margin을 가질 수 있음. 
+    좌우도 갖게 하려면 block으로 변경해야함.
+
+    class를 가리킬 때는 .class {} 형태로 사용
+    한 element가 여러개의 class를 가질 수 있다 <=> id는 한개만 가질 수 있음
+    ex) <span class="btn teal">hello</span>
+
+#3.9 Inline Block
+    
+    div와 같은 block을 display: inline-block; 으로 적용하게 되면 width와 height을 갖는 inline으로 사용가능
+    하지만 반응형 디자인이 지원되지 않는 단점 존재. 따라서 잘 안씀
+
+#3.10 Flexbox Part One
+
+    inline block의 문제를 해결하기위해 flexbox 사용
+    flex는 부모에게 명시한다. 
+        ex) display: flex;
+    flex container는 두개의 축 가지고있음
+        1. main axis : horizontal
+        2. cross axis : vertical
+
+    justify-content property는 main axis에 적용됨
+    align-item property는 cross axis에 적용됨
+    부모가 height를 가지고 있지 않으면 align-item은 작동 x
+    height: 100vh; 에서 v는 viewport를 의미하고 100vh는 화면 높이의 100%
+
+#3.11 Flexbox Part Two
+
+    flex-direction property를 사용하여 main axis와 cross axis을 변경 할 수 있다.
+    flex-direction: row; 가 기본
+    flex-direction: column; 하면 main과 cross axis가 반전됨
+    flex-direction: row-reverse; 오른쪽에서 왼쪽으로 element 배치
+    flex-direction: colomn-reverse; 밑에서부터 위로 element 배치
+
+    flex-wrap은 element의 wrapping 옵션 설정 가능.
+    default는 flex-wrap: nowrap; 화면에 맞게 children element의 width, height 조절됨
+    flex-wrap: wrap;은 children element의 width, height를 조절하지 않음
+
+    flex box practice site : https://flexboxfroggy.com/#ko
+
+#3.12 Fixed
+
+    
