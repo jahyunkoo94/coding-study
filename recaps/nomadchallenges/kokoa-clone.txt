@@ -330,4 +330,157 @@
 
 #3.16 Pseudo Selectors part Two
 
+    특정 element의 형제 element를 찾을때는 ~ 사용
+    ex) p ~ span {}
+
+    attribute selector  
+    - attribute를 사용해 selecting
+    ex) input[placeholder="username"] {}
+    *= is 'contains'
+    *= "hello" 라고 하면 ㅁㄴㅇㄹㄴㅇㄹhelloㅁㄴㅇㄹㄴㅇㄹ 라고 줘도 선택됨.
+    ~ = is 'exactly'
+    ~= "hello" 라고 하면 앞뒤에 공백이 있는 상태에서 hello 인 경우만 선택됨.
+
+#3.17 States
+
+    element의 상태 ex) 
+    :active
+    - element를 클릭했을때
+    :hover
+    - element 위에 커서가 위치했을 때
+    :focus
+    - element를 키보드로 선택했을 때
+    :visited
+    - 링크에만 적용, 해당 링크를 방문한적이 있을 때
+    :focus-within
+    - 특정 부모 element의 자식 element가 focused 됐을 때
+
+    ex) form:hover input{} - form이 hover 일때 input에 적용
+
+#3.18 Recap
+
+    :(콜론)이 두개인 Pseudo selector
+    1) :: placeholder (0:46
+    - placeholder의 특성만 바꾸고 싶을 때 사용
+    2) :: selection (1:31)
+    - 클릭해서 긁을 때(1:58) 발생
+    3) :: first-letter
+    - 첫 글자에만 적용
+    4) ::first-line
+    - 첫 줄에만 작용
+
+    #combinator
+    p span{} 부모자식관계
+    p > span{} 부모와 바로 밑 자식관계
+    p + span{} 바로 다음에 오는 형제관계
+    p ~ span{} 바로 다음에 오지 않아도 되는 형제관계
+
+    #attribute
+    input[type="word"]{} type="word"인 input만을 선택
+    input[type~="word"]{} "word"를 포함하는 input선택
+    input[type$="word"]{} 끝에 "word"가 오는 input 선택
+    input[type^="word"]{} 앞에 "word"가 오는 input 선택
+
+    #state
+    :hover 커서가 올라간상태
+    :active 클릭할때
+    :focus 키보드로 선택한경우
+    :visited link에서 쓰이고 사이트를 방문한 이력이 있을경우
+    :focus-within 자식들중 하나라도 focus상태에 있다면 부모가 바뀔때 쓰임
+
+    #pseudo element
+    ::placeholder placehoder만을 꾸밀때 사용
+    ::selection 드래그 했을때
+    ::first-letter 앞 글자에
+    ::first-line 첫 줄
+
+#3.19 Colors and Variables
+
+    Color 적용 방법
+    1. hexa clor code
+    ex) color: #FFFFFF;
+    2. rgb (red green blue)
+    ex) color: rgb(255,255,255);  
+    3. rgba (rgb alpha) alpha = opacity(투명도)
+
+    :root{} 는 모든 문서의 뿌리
     
+    #Variable은 --name: value; 형태로 사용, 빈 공간은 -로 채워줌
+    ex) 
+        root {
+          --main-color: #fcce00;
+        }
+
+#4 ADVANCED CSS
+#4.0 Transitions
+
+    Transition은 어떤 상태에서 다른 상태로 변하는 애니메이션
+    애니메이션을 원하는 property 이름을 transition property로 지정
+    ex) transition: background-color 10s ease-in-out, color 5s ease-in-out;
+
+    transition: all 5s ease-in-out; 을 이용하면 같은 selector 기준으로 바뀌는 것들이 모두 변경 됨
+    적용할 값이 앞 트랜지션 뒤에있는 selector에 반드시 있어야함.
+     ex) 
+      a {
+        background-color: aliceblue;
+        transition: all 5s ease-in-out;
+      }
+      a {
+        background-color: teal;
+      }
+
+#4.1 Transitions part Two
+
+    ease-in function : 브라우저에게 변화하는 방법을 알려주는 역할
+    ㄴlinear - 변화 그래프가 직선
+    ㄴease-in - 시작과 끝이 빠름
+    ㄴease-out - 시작과 끝이 느림
+    ㄴease-in-out - 시작이 빠르고 끝이 느림
+
+    all : 변화 요소를 한번에 다룬다.
+    ㄴ따로 다루고 싶으면 각각 써주면 됨
+    ex) transition: background-color 10s ease-in-out, color 5s ease-in-out;
+
+    cubic-bezier(0, 0, 0, 0); 으로 직접 설정할수도 있다
+
+#4.2 Transformations
+
+    transformation
+    - element를 변형시킬 수 있다. 
+    - transform은 다른 페이지의 픽셀의 다른 부분에서 일어나기 때문에 element에 영향을 끼치지 않는다
+    - transition을 사용해서 멋진 애니메이션으로 사용 가능. transition은 root에 있어야함
+
+    CSS는 GPU로 작동된다
+
+#4.3 Animations part One
+
+    애니메이션 만드는 방법, infinite를 붙이면 연속해서 재생
+      @keyframes animationName {
+        from {
+          transform: rotateX(0);
+        }
+        to {
+          transform: rotateX(360);
+        }
+      }
+      
+      img {
+        animation: animationName 5s ease-in-out infinite;
+      }
+
+#4.4 Animations part Two
+    
+    keyframes 사용 시 처음으로 돌아가지 않는 문제 해결 방법
+    @keyframes animationName {
+        0% {
+          transform: rotateX(0);
+        }
+        50% {
+          transform: rotateX(360);
+        }
+        100% {
+          transform: rotateX(0);
+        }
+      }
+
+      keyframes은 다른 property보다 transform으로 하는 것을 추천
