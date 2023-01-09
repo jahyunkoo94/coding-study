@@ -523,3 +523,69 @@
 
     brower가 index.html이란 파일을 처음에 찾는다.
     <!-- text --> 로 주석 처리가능. text 뒤에서 ctrl + / 단축키
+
+#6.2 BEM 
+
+    BEM : Blocks, Element Modifier
+    코드를 쉽게 읽기 위해서 사용하는 규칙
+
+    BEM(Block Element Modifier) —추천 규칙
+    - block : .btn {}
+    - elements : .btn__price {}
+    - modifiers : .btn--big {}
+
+    한국어 정리 사이트 https://nykim.work/15
+
+#6.3 Font Awesome
+
+    svg file : 수학적으로 구현된 이미지 - heroicons 검색
+
+    fontawesome 사이트 이용
+    </body> 전에 추가
+    <script
+      src="https://kit.fontawesome.com/6478f529f2.js"
+      crossorigin="anonymous"
+    ></script>
+
+#6.4 Sign Up Screen part Two
+
+    버튼 input으로 생성
+      <input type="submit" value="Log in" />
+
+#6.5 Status Bar CSS
+
+    <head> 에 link:css 입력 하면 css 추가 문장 자동 생성됨
+
+    body에 font-family를 사용하여 폰트 변경 가능
+
+    Google fonts 웹사이트에서 원하는 폰트를 가져다 쓰면 된다.
+    - 사용하지 않는 스타일까지 모두 선택하면 시간이 오래 걸릴 수 있다.
+    - css 에서 @import url로 추가 가능
+
+    justify-content space-between으로 가운데가 딱 맞지 않을때 사용하는 방법 : css hack 
+    1. 형제의 width 개수만큼으로 width 설정
+    2. 형제 각각들을 nth-child{ justify-content: }로 정렬
+    ex)
+        .status-bar__column {
+        width: 33%;
+        }
+
+        .status-bar__column:nth-child(2) {
+        display: flex;
+        justify-content: center;
+        }
+
+        .status-bar__column:last-child {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        }
+
+    icon size는 아이콘 class이름 뒤에 fa-2x, fa-lg 등등 을 붙여주면됨
+
+
+
+
+
+
+
