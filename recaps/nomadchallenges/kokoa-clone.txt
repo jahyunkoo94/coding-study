@@ -233,7 +233,7 @@
     값 2개일떄 위아래, 오른쪽아래 적용.
         ex) margin : vertical(top, bottmom) horizontal(right, left);
     값 4개일때 clockwise 순서대로 적용. 
-        ex) margin : top right left bottm; 
+        ex) margin : top right bottom left; 
 
     collapsing margins :  https://velog.io/@raram2/CSS-%EB%A7%88%EC%A7%84-%EC%83%81%EC%87%84Margin-collapsing-%EC%9B%90%EB%A6%AC-%EC%99%84%EB%B2%BD-%EC%9D%B4%ED%95%B4
 
@@ -484,3 +484,42 @@
       }
 
       keyframes은 다른 property보다 transform으로 하는 것을 추천
+
+#4.5 Media Queries
+
+    Media Quary : css를 이용하여 사용자의 screen 사이즈를 알 수 있는 방법
+    ex) @media screen and (max-width: 400px) {
+         div { 
+            background-color: wheat
+            }
+         } - 400px이 넘지 않는 스크린일때 div background=color 변경
+        @media screen and (min-width: 300px) anc (max-width: 400px){} - 스크린 300px ~ 400px 사이일때
+
+    browser inspect의 device toolbar를 이용하여 기기별 브라우저를 볼 수 있다.
+    
+    @media screen and (orientation: landscape) {} 옵션으로 가로/세로 모드 조건 확인가능
+        landscape 모드 = 가로모드, portrait 모드 = 세로모드
+
+#4.6 Media Queries Recap 
+
+    - @media query는 코드의 조건을 추가 할 수 있는 방법이다.
+    - media query도 {} 중괄호로 여닫는다.
+        → 그 안에 element에 속성을 적용시켜야 한다.
+    - media query는 "and"를 써서 연결된다.
+    - 조건에는 "min-width" 뿐만 아니라, "min-device-width"도 있다.
+        → -device-width는 오직 핸드폰에만 적용된다.
+
+    @media print , @media screen
+    - print, screen이 media type
+    - print로 프린트할때 옵션을 변경할 수 있음
+
+#6 CLONING TIME
+#6.0 Introduction
+
+    .gitignore 파일을 이용해 커밋에 포함하지 않을 파일을 쓸 수 있다.
+        .DS_Store
+
+#6.1 Sign Up Screen part One
+
+    brower가 index.html이란 파일을 처음에 찾는다.
+    <!-- text --> 로 주석 처리가능. text 뒤에서 ctrl + / 단축키
