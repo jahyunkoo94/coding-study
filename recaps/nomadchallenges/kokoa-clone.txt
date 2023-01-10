@@ -583,8 +583,15 @@
 
     icon size는 아이콘 class이름 뒤에 fa-2x, fa-lg 등등 을 붙여주면됨
 
+#6.6 Sign Up Screen part Three
 
+    style.css에 reset.css를 추가하면 브라우저에서 제공하는 body margin 제거 가능.
+    
+    width:50% 와 같이 부모에 대한 비율로 크기 설정할수 있음
 
+#6.7 Log In Form part One
+
+    
 
 
 
