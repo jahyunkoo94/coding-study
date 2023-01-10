@@ -585,13 +585,62 @@
 
 #6.6 Sign Up Screen part Three
 
-    style.css에 reset.css를 추가하면 브라우저에서 제공하는 body margin 제거 가능.
+    style.css에 reset.css 코드를 추가하면 브라우저에서 제공하는 body margin 제거 가능.
+    추가로 생기는 모든 초기화 내용도 적으면 됨.
     
     width:50% 와 같이 부모에 대한 비율로 크기 설정할수 있음
 
 #6.7 Log In Form part One
 
+    variable.css 파일을 만들고 :root { } 내부에 변수를 설정해서 사용할 수 있다.
+    변수 형식은 --variable: value;
+    variable.css 파일은 반드시 style.css에 import 해주어야 함
+
+#6.8 Log In Form part Two
+
+    :not([ 조건 ]) 
+    - 조건에 해당되지 않는 셀렉터만 pointing 가능
+    ex) #login-form input:not([type="submit"]) {}
+
+    submit 같은 tag에는 cursor: property 적용하면 좋음.
+
+#6.9 Recap and Forms
+
+    css 파일들을 폴더로 organize
+    style.css 파일에는 font-family와 같이 모든 스크린에 적용될 수 있는걸 써놓는걸 추천
+
+    form은 중요한 2가지 속성(attribute)을 가지고 있다. 하나는 action이고, 다른 하나는 method이다
+    - action은 어떤 페이지로 data를 보낼건지 지정할 수 있다.
+    - action에 적어 놓은 URL에 해당하는 파일이 반드시 존재해야한다.
+    - method는 2가지 방식 중 하나를 쓸 수 있다. 하나는 POST이고, 다른 하나는 get이다.
+    - POST는 백엔드 서버에 정보를 전송하는 방식이라 이번 강의에서는 사용할 수 없다.
+    - get 방식은 보안에 취약하다. username이랑 password를 get 방식으로 보내선 안된다. 
+        URL에 포함되어도 상관없는 정보들을 get 방식으로 보내는 것이다.
+
+#6.10 Navigation Bar part One
     
+    VSC Shorcut : 다음과 같이 입력하면 계층구조와 개수를 한번에 입력해준다
+    ex) nav>ul>li*4>a 
+
+#6.11 Navigation Bar part Two
+    
+    특정 element를 고정할때는 position: fixed;
+
+#6.12 Border Box 
+
+    CSS box의 원리
+    - width 200px 박스에 패딩 50px을 주면 width를 50px을 늘려 200px을 유지하려고 한다.
+    - 이때 box-sizing: border-box; property를 통해 box 크기를 유지한채 padding을 줄 수 있다.
+
+#6.13 Navigation Bar part Three
+
+    position: absolute; 를 사용해 element 위에 element 배치
+    이때 부모 class가 position: relative; 여야 함
+
+#6.14 Screen Header
+
+#6.15 Friends Screen part One
+
 
 
 
