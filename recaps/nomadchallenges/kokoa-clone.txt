@@ -592,8 +592,9 @@
 
 #6.7 Log In Form part One
 
-    variable.css 파일을 만들고 :root { } 내부에 변수를 설정해서 사용할 수 있다.
-    변수 형식은 --variable: value;
+
+    variable.css를 만들고 sytle에 import
+    variable.css에는 :root {} 안에 변수(--variable:value; 형태로) 선언 한다.
     variable.css 파일은 반드시 style.css에 import 해주어야 함
 
 #6.8 Log In Form part Two
@@ -640,8 +641,8 @@
 #6.14 Screen Header
 
 #6.15 Friends Screen part One
-
-
+    
+    object-fit: cover; 사진 사이즈 변경 시, 가로 세로 비율 그대로 유지
 
 
 
