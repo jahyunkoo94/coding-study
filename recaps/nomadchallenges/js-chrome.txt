@@ -1,0 +1,63 @@
+#2.0 Your First JS Project
+
+    browswer에서 inspect -  Console에서 js 사용가능.
+    browswer에 js는 내장되어있다.
+    브라우저가 js을 실행하게 만드는 방법 : css처럼 html을 통해서 body 안에 작성
+    ex)  <body> <script src="app.js"></script> </body>
+    
+    잘못된 코드는 Console에 들어가서 확인 가능
+
+#2.1 Basic Data Types
+
+    integer : 정수 
+    ex) 1, 2 ,3 
+
+    float : 소수 
+    ex) 1.1, 1.23, 23.43
+
+    string : text를 ""안에 쓴다, "로 열었으면 "로 닫고 '로 열었으면 '로 닫는다 섞어서는 x
+    ex) "hello" + "Koo"
+
+#2.2 Variables
+
+    console.log(535353); 을 통해 콘솔에 ()안의 정보 출력
+
+    js도 html과 마찬가지로 위에서 아래로 읽는다.
+
+    const a = 5; 로 변수 사용 constant(상수)라는 의미
+    = 뒤에 넣는 타입에 따라 변수 type 적용
+
+    js에서는 camel 표기법 사용 
+    ex) const veryLongVariableName = 0;
+
+#2.3 const and let
+
+    변수만들때 let, const, var차이
+    let : 재선언 금지, 재할당 가능
+    const : 재선언 금지, 재할당 금지
+    var : 재선언 가능, 재할당 가능
+
+    const를 default로 사용하고 변수의 업데이트가 필요할때만 let으로 사용하는것이 좋다
+    const와 let은 새로 생긴 것이며 js는 원래 var를 사용했었음
+
+#2.4 Booleans
+
+    boolean : true, false 두 가지 값만 존재
+    ex) const amIFat = true;
+
+    null : 변수에 아무것도 없다. 값이 없음을 알리기 위해 의도적으로 채워진 값
+    ex) let something = null;
+    undefined : 정의되지 않음. 메모리상에 공간은 존재하지만 값이 채워지지 않은 것
+    ex) let something;
+
+#2.5 Arrays
+
+    array는 [] 안에 data를 넣어서 사용, type의 종류에 상관 없이 항목을 쉼표로 분리
+    ex) const daysOfWeek = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"]
+
+    array의 데이터에 접근할 때는 arrayName[index] 첫번째 data의 index는 0부터 시작
+    ex) 5번째 fri 출력 하려면 console.log(daysofWeek[4]);
+
+    주석사용 방법 : //로 시작
+
+    array.push(data); 로 array에 데이터 추가 할 수 있음
