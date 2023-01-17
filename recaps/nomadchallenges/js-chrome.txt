@@ -121,7 +121,44 @@
 
         => hello lynn nice to meet you!
 
-#2.9,10 Recap
+#2.11 Returns
 
+    fuction 외부로 반환하는 값. return을 하는 순간 function은 종료
+    ex) function calculateKrAge(ageOfForeigner){
+            return ageOfForeigner +2;
+        }
 
+#2.13 Conditionals
 
+    conditionals : 조건문
+
+    prompt()는 js를 잠시 pause
+
+    typeof variable 로 타입 확인 가능
+
+    parseInt() : string을 Int로 변환, 문자를 argument로 넣으면 NaN을 반환
+
+#2.14 Conditionals part Two
+
+    isNaN() 은 NaN 여부를 boolean으로 return
+
+    cnodition은 항상 boolean이어야 함
+
+    if(condition){
+        // condition == true
+    }
+    else{
+        // condition == false
+    }
+
+#2.15 Conditionals part Three
+
+    operator 
+        && : and
+        || : or
+
+#2.16 Recap
+
+    operator
+        === : check equal
+        !== : check not equal
