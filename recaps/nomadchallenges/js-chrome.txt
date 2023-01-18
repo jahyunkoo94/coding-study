@@ -162,3 +162,31 @@
     operator
         === : check equal
         !== : check not equal
+
+#3.0 The Document Object
+
+    js에서 html을 가져오고 변경 할 수 있다.
+    ex) document.title = "Hi";
+
+#3.1 HTML in Javascript 
+
+    id 통해 elemenet 가져오는 방법 : document.getElementById("idname");
+
+#3.2 Searching For Elements 
+
+    class name 통해 여러개 element 가져오는 방법 : getElementsByClassName
+    ex) document.getElementsByClassName("ClassName");
+
+    css 방식으로 검색 할수있는 function : querySelector 
+    ex) document.querySelector(".hello h1"); 
+        document.querySelector("#hello"); 
+    같은 조건이 여러개 있을때 첫번째 element만 가져온다.
+
+    여러개 가져오는 function : querySelectorAll
+    ex) document.querySelectorAll(".hello h1");
+
+    querySelector로 대부분의 element를 가져오게 될 것
+
+
+
+
