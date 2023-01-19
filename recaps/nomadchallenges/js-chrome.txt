@@ -205,5 +205,28 @@
     두번째 arguement에 넘겨주는 function은 ()를 쓰지않고 이름만 쓴다.
     이렇게하면 event가 발생했을때 js가 대신 function을 실행시켜준다.
 
+#3.4 Events part Two
+
+    console.dir(object);를 통해서 property와 event 확인 가능
+
+    sytle은 css가 하는 것이 좋다
+
+#3.5 More Events
+
+    title.addEventListner("click", handleTitleClick
+    대신에 title.onclick = handleTitleClick; 으로도 가능
+    addEventListner를 선호하는 이유는 나중에 remove로 지울 수 있어서
+
+    fuction handleWindowResize(){
+        document.body.style.backgroundColor = "tomato";
+    }
+
+
+    document.body만 가져올 수 있음. document.div 이런건 안됨
+    나머지 element들은 querySelector나 getElementById로 불러와야됨
+
+    창 크기 변경됐을때 이벤트
+    ex) window.addEventListner("resize", handleWindowResize);
+
     
 
