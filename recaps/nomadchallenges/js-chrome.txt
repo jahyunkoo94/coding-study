@@ -187,6 +187,23 @@
 
     querySelector로 대부분의 element를 가져오게 될 것
 
+#3.3 Events
 
+    document HTML 파일에 app.js가 import되어있기 때문에 browswer를 통해 접근이 가능한 것
 
+    대부분의 js가 하는일은 event를 listen 하는 것 
+
+    ex) const title = document.querySelector("div.hello:first-child h1");
+
+        function handleTitleClick(){
+            console.log("title was clicekd!");
+        }
+        
+        title.addEventListner("click", handleTitleClick)
+
+    addEventListner 애 첫번째 argument에는 어떤 이벤트를 listen 하고싶은지 명시해야하고
+    두번째 arguement에 넘겨주는 function은 ()를 쓰지않고 이름만 쓴다.
+    이렇게하면 event가 발생했을때 js가 대신 function을 실행시켜준다.
+
+    
 
