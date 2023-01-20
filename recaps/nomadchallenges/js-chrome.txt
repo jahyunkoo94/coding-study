@@ -229,4 +229,64 @@
     ex) window.addEventListner("resize", handleWindowResize);
 
     
+#3.6 CSS in Javascript
 
+    if - else문
+    ex) const h1 = document.querySelector(".div.hello:first-chile h1");
+
+        function handleTitleClick() {
+        const currentColor = h1.style.color;
+        let newColor;
+        if (currentColor === "blue") {
+            newColor = "tomato";
+        } else {
+            newColor = "blue";
+        }
+        h1.style.color = newColor;
+        }
+
+    js에서 css 수정하는것은 선호하지 않음.
+
+#3.7 CSS in Javascript part Two
+
+    css에서 작성한 class에 대한 내용을 js로 전달 할 수 있다.
+    ex) style.css
+            h1 {
+                color: cornflowerblue;
+                transition: all .4s ease-in-out;
+            }
+
+            .active {
+            color: tomato;
+            }
+
+        app.js
+            function handleTitleClick() {
+                h1.className = "active";
+            }
+
+    className은 getter and setter
+        if (h1.className === "active"){
+            h1.className= "";
+        }else{
+            h1.className = "active";
+        }
+
+
+    개발자가 지은 이름 : raw value 의 스펠링을 틀리면 작동하지 않는 부분을 찾기 힘듬
+    => 따라서 반복되는 string은 변수로 저장해서 사용하는게 좋다.
+        const activeClass = "acvitve";
+
+    js로 class를 삭제 하는것은 좋지 않음.
+
+#3.8 CSS in Javascript part Three   
+
+    classList.contains로 클래스 가지고 있는지 확인
+    if (h1.classList.contains(clickedClass)){
+        h1.classList.remove(clickedClass);
+    }
+    else{
+        h1.classList.add(clickedClass);
+    }
+
+    classList.toggle("className") => true면 className Remove, false면 add
