@@ -368,3 +368,16 @@
 
     appendChild function을 통해 document에 추가 가능
     ex) document.body.appendChild(bgImage);
+
+#7.0 Setup
+
+
+    const toDoInput = toDoForm.querySelector("input");
+    =
+    const toDoInput = document.querySelector("#todo-form input");
+
+#7.1 Adding ToDos
+    
+    변수명은 li가 아니어도 상관 없지만 createElement() 에는 "li" 여야 한다.
+    ex) const li = document.createElement("li");
+
