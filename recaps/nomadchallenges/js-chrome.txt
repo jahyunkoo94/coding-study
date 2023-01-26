@@ -381,3 +381,19 @@
     변수명은 li가 아니어도 상관 없지만 createElement() 에는 "li" 여야 한다.
     ex) const li = document.createElement("li");
 
+#7.2 Deleting To Dos
+
+    click 이벤트의 첫번째 argument.target.parentElement를 통해 부모 element를 알 수 있음.
+    ex) function deleteToDo(event) {
+        const li = event.target.parentElement;
+        }
+
+    mac 기준 이모지 단축키는
+    control + cmd + space 
+
+#7.3 Saving To Dos
+
+    localStorage에는 array 저장 불가, text만 가능
+
+    array, js 어떤것이던 상관없이 string으로 만들어 주는 기능 => JSON.stringify(something);
+    ex) localStorage.setItem("todos", JSON.stringify(toDos));
