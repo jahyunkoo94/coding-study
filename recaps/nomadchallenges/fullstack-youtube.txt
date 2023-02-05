@@ -65,6 +65,125 @@
     "presets": ["@babel/preset-env"]
     }
 
+#2.4 Nodemon
+
+    다음 명령어로 설치. npm이 이미 설치되어 잇는 패키지 확인
+    npm install @babel/core @babel/node --save-dev
+
+    nodemon은 우리가 만든 파일이 수정되어 저장될때마다 재시작해준다
+
+    package.json의 script에 다음과 같이 작성
+    "dev": "nodemon --exec babel-node index.js"
+    => nodemon으로 execute한다. babel-node로 index.js를.
+
+#3.0 Your First Server 
+
+    code와 로직을 가지고 있는 파일을 src 폴더 안으로 이동.
+
+    import express from "express";
+    위와 같이 입력하면 npm이 알아서 node_mudles 폴더에서 express를 찾아준다.
+
+    서버란 24시간 내내 온라인에 연결된 컴퓨터
+    request를 listening 하고 있다가 응답을 보낸다.
+
+    port는 컴퓨터의 network 통로로 여러개 존재하며 높은숫자의 port가 보통 비어있다.
+
+    app.listen(4000, handleListening);
+    app.listen(4000, () => console.log());
+    위와같이 작성하게되면 서버는 port 4000을 listening 하고 있는 것
+
+    브라우저에 localhost:4000 입력해서 서버에 접속 할 수 있다.
+    nodemon 서버 종료하려면 컨트롤 + c
+
+#3.1 GET Requests
+
+    Cannot GET / 
+    GET은 HTTP Method. HTTP는 서버끼리 소통하는 방식
+    / 는 root
+    GET / 는 페이지를 달라는 의미
+
+    웹사이트에 접속할때 브라우저는 웹사이트를 request하고 페이지를 가져다주는 것임.
+
+#3.2 GET Requests part Two
+
+    express application 이 만들어진 다음부터 express와 연관된 코드를 작성해야 한다.
     
+    request는 사용자가 아닌 브라우저가 보내는 것이다.
 
+#3.3 Responses
 
+    서버 종료 단축어 ctrl + c
+
+    GET eventhandler 함수에는 아래와 같이 request, response 두개의 argument가 실려온다.
+
+    const handleHome = (req, res) => {};
+
+#3.4 Recap 
+
+    request를 받았을때 resond는 필수. 하지않으면 브라우저는 계속 기다림.
+
+#3.5 Middlewares part One
+
+    middle software란 requset와 resonse 사이에 있는 것을 의미한다.
+
+    handler는 middleware이고 controller라고도 한다.
+
+    middleware는 다음 function으로 작업을 넘겨주는 것 
+
+#3.6 Middlewares part Two
+
+    app.use는 global middleware를 만들 수 있게 해주는 함수. 모든 URL에 사용 됨.
+    어떤 URL에도 작동하는 middleware로 app.get전에 와야 한다.
+    순서가 영향을 주기 때문에 순서를 유의
+
+    middleware는 일반적인 controller와 같지만 argument에 next function이 추가된다는 것만 다르다.
+    app.use가 next(); function을 호출하지 않으면 get이 호출되지 않는다
+
+#3.7 Setup Recap 
+
+    모든것은 package.json으로부터 시작하고 특정장소에 뭔가를 입력하면 npm이 그것을 사용할 수 있다.
+    scripts에는 dev라는 별명으로 명령어를 쉽게 입력할 수 있도록 한다.
+    dependencies에는 프로젝트에 필요한 패키지. devDependencies는 개발에 필요한 패키지 작성
+    node_module 폴더가 커지기 때문에 gitigore에 포함시킨다. 
+    npm i 를 하면 package 내용을 읽어서 npm이 필요한 패키지를 자동으로 설치함.
+    node.js가 최신 코드를 지원하지 않을 수 있기 때문에 nodemon을 사용.
+    babel-node를 사용하기 위해서는 babel.config.json 파일 내부에 preset이 작성되어야 함.
+
+#3.8 Servers Recap
+
+    server란 항상 켜져있고 인터넷에 연결되어 있으면서 request를 listening 하고 있는 컴퓨터이다
+    사용자는 브라우저를 통해 request를 보낼 수 있다.
+
+    컴퓨터에는 많은 port가 있고 아래 코드처럼 서버는 포트를 통해 들어오는 request를 listening할 수 있다.
+        app.listen(PORT, handleListening);
+    
+    서버는 종료하지 않고 항상 listening하고있다. 
+
+    서버에 request가 들어왔을때 작동할 함수를 연결해야함.
+     / 는 홈페이지를 의미하며 /login, /lecture와 같은 통로를 routes라고 부른다  
+    웹사이트는 내가 가는것이 아니라 브라우저가 웹사이트를 서버에게 받는것
+    
+    express에서는 route, handler 두개의 argument를 가진 app.get() 을 사용해 브라우저와 홈페이지를 연결한다.
+    ex) app.get("/", handleHome)
+
+#3.9 Controllers Recap
+
+    handler로 부르는 controller들(middleware)에는 req, res를 argument로 가지고 있음.
+    res.enn() 또는 res.send("I love middlewares")로 종료하거나 메세지를 보낼 수 있음.
+    express가 controller에 첫번째 인수로 req, 두번째로 res를 전달해준다.
+
+    # Server
+    서버는 인터넷에 연결되어 있으며 24시간 꺼지지 않는 컴퓨터이다.
+    서버는 클라이언트(여기서는 브라우저)에서 보낸 request 를 받고 response 보낸다.
+
+    # Request, Response
+    클라이언트와 서버는 개방된 포트를 통해 request 와 response 를 주고받는다.
+    서버는 request 를 받으면 반드시 response 를 해주어야 한다. 브라우저 무한 로딩이 될 수 있기 때문이다.
+    HTTP request 는 어떤 route(url) 에 대한 HTTP Method 요청이고 서버는 그 요청에 대한 response 를 해주어야한다. 여기서 중요한 것이 또 **controller**이다.
+
+    # controller
+    컨트롤러는 전달받은 request를 처리고 response를 전달하기 위한 콜백함수이다.
+
+#3.10 Middleware Recap
+
+    
