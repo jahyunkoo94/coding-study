@@ -185,5 +185,70 @@
     컨트롤러는 전달받은 request를 처리고 response를 전달하기 위한 콜백함수이다.
 
 #3.10 Middleware Recap
-
     
+    # Middleware
+    미들웨어는 컨트롤러가 request 처리 작업을 완료하고 response 를 전달하기 전에 request 처리를 도와주는 콜백함수이다.
+    미들웨어는 request 오브젝트와, response 오브젝트 말고도 next 파라미터를 갖는다.
+    next 파라미터는 다음으로 request 를 처리할 콜백함수를 담고있고 next()를 통해 넘길 수 있다.
+    파라미터의 이름은 꼭 req, res, next로 할 필요는 없지만 이렇게 쓰는것이 일반적이다.
+    마지막 controller는 next가 필요가 없음.
+    app.use(controller1, controller2, ...) 와 같이 사용 할 수 있다.
+
+#3.11 External Middlewares
+
+    # Morgan 
+    NodeJS를 위한 HTTP request logger
+    npm i morgan
+    https://www.npmjs.com/package/morgan
+
+#4.0 What are Routers? 
+
+    Router 
+
+#4.1 Making Our Routers
+
+    홈에서 바로 갈수있는 /join, /login 와 같은 것들을 global router 라고 부름.
+
+    마케팅 측면이나 깔끔함을 위해 nomadcoders.co/wetube 와 같이 설정하기도 한다.
+    로직상으로는 nomadcoders.co/courses/wetube
+
+#4.1 Making Our Routers (11:05)
+
+    1. Instead using app.get([URL], [Handler]) to handle the request, we can create a router and let the router handle GET request.
+    2. Create app.use("/", homeRouter) - This way, when a user sends a GET request, the request gets routed to homeRouter.
+    3. Then, create a constant variable called homeRouter as below:
+    const homeRouter = express.Router()
+    4. Create a handler function as below:
+    const handleReq = (req, res) => {res.send("Do something")}
+    5. To connect the router to the handler use the code below:
+    routerOne.get("/", handleReq);
+    6. Then, users will get routed from the Express [app] to Router [homeRouter] to Handler function [handleReq] when users a request to get URL "/".
+
+#4.2 Cleaning the Code 
+
+    코드를 일단 작성한다. 그리고 코드를 다시 정리한다. (clean code 책)
+
+    import는 파일마다 해주어야 함.
+
+    모든 파일은 모듈이기 때문에 다른 파일에 import하기 전에는 export를 해줘야함. 아래와 같이 변수를 export 가능
+    export default globalRouter;
+
+    server.js에 아래와 같이 import 해주어야 함.
+    import userRouter from "./routers/userRouter";
+
+#4.3 Exports
+
+    default로 export 할때와는 다르게 함수나 변수를 직접 export할때는 import 할 때 아래와 같이 이름 그대로 {} 안에 써야함
+    import { join } from "../controllers/userController";
+
+    js에서는 new, delete와 같은 기본함수들은 이름으로 사용할 수 없다.
+
+#4.4 Router Recap 
+
+    Router를 사용하는 이유는 URL을 정리하기 위함.
+    URL이 어떻게 시작하는지에 따라 작성한다.
+
+#4.5 Architecture Recap
+
+    ../ 은 상위폴더, ./ 은 현재위치를 의미
+    terminal 명령어 cd 는 change Directory의 줄임말 
