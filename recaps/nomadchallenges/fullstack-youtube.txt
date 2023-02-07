@@ -252,3 +252,66 @@
 
     ../ 은 상위폴더, ./ 은 현재위치를 의미
     terminal 명령어 cd 는 change Directory의 줄임말 
+
+#4.6 Planning Routes 
+
+#4.7 URL Parameters part One
+
+    : 기호를 사용히먄 URL안에 변수를 넣을 수 있다.
+    parameter 라고 부름. req 안에 담겨져서 온다.
+
+#4.8 URL Parameters part Two
+
+    videoRouter.get("/:id", see); 아래에 
+    videoRouter.get("/upload", upload);
+    이 있으면 /view 로 가지않고 모두 /:id 로 처리됨. 순서 중요함.
+
+    # 정규식
+    \w+: 모든 문자, 숫자 선택
+    \d+: 모든 숫자 선택
+
+    # 정규표현식 테스트 사이트
+    https://www.regexpal.com
+
+#5.0 Returning HTML
+
+      res.send(
+        "<!DOCTYPE html><html lang='ko'><head><title>Wetube</title></head><body><h1>Home</h1><footer>&copy;2021 Wetube -  All rights reserved</footer></body></html>"
+        );
+        
+    HTML을 표시하려면 위와같이 너무 길고 수정이 불편하다.
+    이 때 쓰는것이 PUG
+
+#5.1 Configuring Pug
+    pug는 우리 app의 view engine이 될 것임. 
+    View Engine: 뷰엔진은 서버에서 처리한 데이터 결과값을 정적인 페이지(HTML 파일)에 보다 편리하게 출력해주기 위해 사용
+    뷰엔진에서 요구하는 형태로 템플릿 파일(문서)을 만들고, 해당 템플릿 문서에 서버에서 처리한 데이터를 전달하면 해당 데이터를 화면에 출력할 수 있다. //
+    
+    app에 view engine이 pug임을 알려줘야함
+    server.js에 아래와 같이 선언
+    app.set("view engine", "pug");
+
+    views 폴더를 현재 디렉토리에 생성 후 home.pug 파일 생성
+
+    render("view file name") 으로 렌더링한다 
+    ex) export const trending = (req, res) => res.render("home");
+
+    cwd = current working directory
+    현재 작업 디렉토리는 node.js를 실행하고 있는 package.json 파일이 있는 디렉토리 이다.
+    
+#5.2 Partials
+
+    아래와 같이 입력하면 default Directory를 변경할 수 있다.
+    app.set("views", process.cwd() + "/src/views");
+
+    파일명에는 공백 ㄴㄴ 모든 문자는 lower case로
+
+    footer &copy; #{new Date().getFullYear()} Wetube
+    pug는 js이기 때문에 위와 같이 js코드 사용 가능.
+    pug가 js를 실행해서 유저에게 전달하고 이를 렌더링 이라고 한다.
+
+    include는 다른 파일을 첨부할 수 있다. 
+    pug의 강력한 기능.
+    ex) include partials/footer.pug
+
+
