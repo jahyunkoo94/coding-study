@@ -314,4 +314,66 @@
     pug의 강력한 기능.
     ex) include partials/footer.pug
 
+#5.3 Extending Templates
 
+    extends base.pug
+    위의 코드로 pug 파일을 다른 pug 파일에서 상속 받을 수 있다.
+
+    block content
+    block 을 이용하여 base.pug에 content를 위한 공간을 마련해둘 수 있다.
+
+    상속받은 파일에서 아래와 같이 입력하여 block 안에 content를 집어 넣을 수 있다.
+    block content  
+        h1 Home!
+
+#5.4 Variables to Templates
+
+    pug 파일 내에서 #{variable} 형태로 js 변수를 받을 수 있다.
+
+    res.render("home", { pageTitle: "Home" });
+    위와 같이 home.pug 파일을 render 하는 부분에서 인자로 변수를 넘겨주면 해당 pug 파일에서 변수를 받는다.
+
+#5.5 Recap
+
+    pug는 띄어쓰기와 tab으로 구분된다.
+
+    block 은 상속받은 파일에서 채워넣을 수 있는 빈 공간.
+
+    #{variable} 은 js 변수를 받아들일 수 있는 공간. pug를 render하는 node.js 파일에서 같은 이름의 변수를 보내줘야함
+
+#5.6 MVP Styles
+
+    MVP.css는 HTML 태그에 기본 스타일을 심어줌
+    link(rel="stylesheet" href="https://unpkg.com/mvp.css")
+
+    beutiful css 대신 기본 임시방편
+
+#5.7 Conditionals 
+
+    conditionals는 if else 같은 조건을 의미하며
+
+    h1 tag에 한개의 variable만 집어넣는 경우에는 아래와 같이 사용가능
+    h1=pageTitle 
+    h1 #{pageTitle} 과 같다.
+
+    ex)
+        if fakeUser.loggedIn 
+            small Hello #{fakeUser.username}
+
+#5.8 Iteration
+
+    # Iteration
+    list 를 보여주는것
+
+    videos array의 내용에 대해 한번씩 수행한다.
+    each 문은 통상적으로 each 단수 in 복수 형태로 많이 사용한다.
+    ex)
+        each video in videos 
+            li=video
+
+    pug는 each문에 변수가 존재하지 않는지 검사한다.
+    ex)
+        each video in videos
+            li=video
+        else 
+            li=Sorry nothing found.
