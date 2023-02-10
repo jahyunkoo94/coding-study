@@ -419,3 +419,36 @@
 
     GET은 
     POST 방식은 파일을 보내거나 Database에 있는 값을 바꾸는 뭔가를 보낼때 사용
+
+#6.3 Edit Video part Two
+
+
+    videoRouter.get("/:id(\\d+)/edit", getEdit);
+    videoRouter.post("/:id(\\d+)/edit", postEdit);
+    위의 두줄을 아래의 한 줄로 쓸 수 있다. 하나의 url에 get post 둘다 쓸 때 유용함.
+    videoRouter.route("/:id(\\d+)/edit").get(getEdit).post(postEdit)
+
+    redirect() 는 브라우저를 특정 url로 이동시킬 수 있음.
+
+#6.4 Recap 
+
+    mongodb(mongoose)를 db로 사용할 예정
+
+#6.5 More Practice part One
+#6.6 More Practice part Two
+
+    form(method="POST", action="/videos/upload")
+    action을 통해 form을 전달할 URL설정 가능. 현재 URL default이기 때문에 굳이 안써도 됨.
+
+    const { title } = req.body;
+    const newVideo = {
+        title,
+        rating: 0,
+        comments: 0,
+        createAt: "just now",
+        views: 0,
+        id: videos.length + 1,
+    };
+    위와 같이 프로퍼티 이름과 값 대신 title로만 써도 title: title, 과 같음
+
+#6.7 Introduction to MongoDB 
