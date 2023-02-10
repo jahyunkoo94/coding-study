@@ -414,3 +414,8 @@
     
     변수를 넣어서 URL 이동
     ex) a(href=`${video.id}/edit`)--->localhost:4000/videos/1/edit
+
+#6.2 Edit Video part One
+
+    GET은 
+    POST 방식은 파일을 보내거나 Database에 있는 값을 바꾸는 뭔가를 보낼때 사용
