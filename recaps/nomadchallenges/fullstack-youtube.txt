@@ -236,6 +236,8 @@
     server.js에 아래와 같이 import 해주어야 함.
     import userRouter from "./routers/userRouter";
 
+    default로 export한 object는 import해서 쓸 때 다른 이름으로 사용이 가능하다.
+
 #4.3 Exports
 
     default로 export 할때와는 다르게 함수나 변수를 직접 export할때는 import 할 때 아래와 같이 이름 그대로 {} 안에 써야함
@@ -452,3 +454,190 @@
     위와 같이 프로퍼티 이름과 값 대신 title로만 써도 title: title, 과 같음
 
 #6.7 Introduction to MongoDB 
+
+    mongoDB는 document-based. json like
+    일반적인 DB는 SQL 기반
+
+    mongoDB 설치 링크
+    https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-os-x/
+
+#6.8 Connecting to Mongo
+
+    mongoose는 node.js와 mongoDB의 다리 역할
+
+    Terminal에서 mongod 입력 -> mongosh 입력
+
+    에러 뜨면
+    인텔맥: mongod --config /usr/local/etc/mongod.conf --fork
+    M1: mongod --config /opt/homebrew/etc/mongod.conf --fork
+
+    exit 입력해서 종료
+
+    mongosh 입력해서 나오는 url을 연결해주어야 함
+    ex) db.js 
+        import mongoose from "mongoose";
+
+        mongoose.connect("mongodb://127.0.0.1:27017/wetube");   
+
+    server.js에 db파일 import. 이 파일은 바로 실행됨
+    ex) server.js
+        import "./db";
+
+#6.9 CRUD Introduction
+
+    CRUD란?
+    C = Create
+    R = Read
+    U = Updatd
+    D = Delete
+
+    model을 만드는 이유는 db에게 설명해주기 위함.
+    ex) Video에는 title이 있고 string이다. 
+
+#6.10 Video Model 
+
+    mongoose model의 이름은 소문자가 아닌 대문자로 시작한다.
+    
+    # Schemas
+    몽구스의 모든 것은 스키마로 시작합니다.
+    각 스키마는 MongoDB 컬렉션에 매핑되고 해당 컬렉션 내 문서의 모양을 정의합니다.
+    https://mongoosejs.com/docs/guide.html#schemas
+
+    # Models
+    mongoose.model(modelName, schema):
+    모델은 스키마 정의에서 컴파일된 멋진 생성자입니다. 모델의 인스턴스를 document라고 합니다. 모델은 기본 MongoDB 데이터베이스에서 문서를 만들고 읽습니다.
+    https://mongoosejs.com/docs/guide.html#models
+    https://mongoosejs.com/docs/models.html
+
+    db.js 파일은 db를 mongoose와 연결시켜서 video model을 인식시키는 역할을 한다.
+    server.js 파일에 import "./db"; 를 함으로써 서버에 연결
+
+#6.11 Our First Query 
+
+    callback 이란 무엇인가 발생하고 난 다음 호출되는 function을 의미함. 
+    
+#6.12 Our First Query part Two
+
+    M1 맥 ( 에러해결 )
+    Error: couldn't connect to server 127.0.0.1:27017, connection attempt failed: SocketException: Error connecting to 127.0.0.1:27017 :: caused by :: Connection refused :
+    connect@src/mongo/shell/mongo.js:372:17
+
+    (*****)
+    제가 겪은 모든 에러들과 해결과정 종합해서 정리해보았습니다.
+    m1이 파일 저장경로가 달라서 빙빙 돌았었네요..
+    mongo 사용후 에러 나오시는분들은 꼭 mongod 실행 후 에러코드 확인해보시길 바랍니다.
+
+
+    1. mongodb가 켜져있는지 확인
+    brew services list >> mongodb 실행중인지 확인
+    brew services run mongodb-community >> 서버실행
+    + stop (종료) , restart(재시작)
+
+    2. background process 설정
+    mongod --config /opt/homebrew/etc/mongod.conf --fork
+
+    --config : 설정하다
+    /opt/homebrew/etc/mongod.conf : mongodb Configuration file 위치
+    --fork: daemon 모드 설정
+    참고 : https://docs.mongodb.com/manual/reference/configuration-options/
+
+    3. mongo 오류시 mongod 실행후 error 코드 확인하기 (***)
+
+    3-1. dbpath error 코드 발생시
+    mongodb는 dbpath 경로에 directory(파일)이 생성되어 있어야 작동한다.
+    mongodb default dbpath 는 /data/db 이다.
+
+    sudo mkdir /data/db
+
+    sudo: 사용자권한 사용
+    mkidir: 다이렉토리 생성
+    /data/db: mongodb dbpath default 경로
+
+    mongod --dbpath /data/db : mongod dbpath 설정해주기
+
+    dbpath 설정까지 완료했다면 brew services restart mongodb-community
+
+    심화 ( dbpath 다른곳에 설정하기 )
+    vi /opt/homebrew/etc/mongod.conf ( mongod.conf 파일 접속 )
+
+
+    vi CLI 가 먹히지 않을시
+    export PATH=%PATH:/bin:/usr/local/bin:/usr/bin
+    참고: https://keepdev.tistory.com/67
+
+    CLI로 편집하기
+    o( insert mode ) > 수정 후 > esc 연타 > :wq ( 파일 나가기 )
+
+    storage:
+    dbpath: ( 원하는 path 입력 )
+
+    혹은 finder 에서 command + shift + g > /opt/homebrew/etc/mongod.conf 검색
+
+    mongod.conf 에서 dbpath 설정을 마쳤다면
+    source /opt/homebrew/etc/mongod.cof
+    source : 저장 후 실행
+
+    다시 한 번 더 mongod --dbpath (변경된 경로)
+
+    (mongod --dbpath 로 임시로 경로 변경을 할 수 있지만 다시 킬때마다 영구적으로 설정해주려면 mongod.conf 파일에서 dbpath를 바꾸어주어야합니다.)
+
+    3-2 소켓 오류 발생시 (mongod 에서 확인)
+    failed to unlink socket file","attr":{"path":"/tmp/mongodb-27017.sock","error":"permission denied"
+
+    /tmp/mongodb-27017.sock 파일 제거해주면 정상적으로 작동합니다.
+
+    sudo rm -rf /tmp/mongodb-27017.sock
+
+    rm : remove file
+    -r : 디렉토리제거가능
+    -f : 확인없이 제거
+
+    brew services restart mongodb-community
+
+    참고 : https://stackoverflow.com/questions/63562177/mongod-aborts-on-mac
+
+    Documentation:
+    https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/
+
+#6.13 Async Await 
+
+    ex) call back 사용 videoContoroller.js
+        console.log("start")
+        //Video.find({}, (error, videos) => {
+            return res.render("home", { pageTitle: "Home", videos });
+        });
+        console.log("finished")
+
+    promise는 callback의 최신 버전이라고 생각하면 됨. => async await
+    js는 기다리는 기능이 없기 때문에 callback을 썼지만
+    await 로 수행될때까지 기다리는것을 직관적으로 확인할 수 있다.
+    await이 들어있는 function을 async 로 비동기로 처리할 것을 알려줘야만 await을 사용할 수 있다.
+
+    async await 방식은 어디서 무엇이 오는지 명확하기 안하기 떄문에 두가지 옵션 사용
+    # 1. try catch 문으로 try 코드 실행 중 오류 발생 시 catch 문으로 이동하고 해당 error를 파라미터로 사용 할 수 있다.
+    ex) videoContoroller.js 
+        try {
+        const videos = await Video.find({});
+        console.log(videos);
+        return res.render("home", { pageTitle: "Home", videos });
+        } catch (error) {
+            return res.render("server-error", { error });
+        }
+
+#6.14 Returns and Renders   
+
+    res.render 를 두번 하게되면 오류가 발생한다. render한 것은 다시 render할 수 없음
+    - redirect(), sendStatus(), end() 등등 포함 (express에서 오류 발생)
+    
+    return 자체가 필수 요소는 아니지만 res.render 이후에 res 을 사용하면 어짜피 에러가 나기 때문에
+    에러가 나기전에 return으로 function을 종료해 주는 것임. 
+    -> return 은 실수를 방지하기 위해 function을 마무리 짓는 역할로 사용 하는 것
+
+    callback 형태로 사용시 callback 함수가 상위 function 이후에 실행되기 때문에 return 순서에 헷갈릴 수 있음.
+    ex) videoContoroller.js
+        export const home = (req, res) => {
+        Video.find({}, (error, videos) => {
+            return res.render("home", { pageTitle: "Home", videos });
+        });
+        return res.end();
+        };
