@@ -641,3 +641,52 @@
         });
         return res.end();
         };
+
+#6.15 Creating a Video part One 
+
+    form의 input에는 각기 다른 name을 부여해줘야 함.
+
+    split(",") 함수를 이용해 , 를 기준으로 string을 array로 받을 수 있다.
+
+    map 함수를 이용해 단어 앞에 # 추가
+    ex) hasgtags: hashtags.split(",").map((word) => `#${word}`),
+
+#6.16 Creating a Video part Two
+
+    mongoose는 string 타입에 number를 넣어도 자동으로 string으로 변환해 준다.
+
+    데이터의 형태를 미리 정의해두고 잘못된 정보를 기록하면 mongoose가 데이터 타입의 유효성 검사를 도와준다.
+
+    save() fuction은 promise를 return 해준다.
+    db에 save 하는데 시간이 걸리기 때문임.
+    이 말은 save가 실행되기까지 기다려줘야 한다는 뜻이다. 따라서 async await 처리 필요
+    ex) videoContoroller.js
+
+        export const postUpload = async (req, res) => {
+            const { title, description, hashtags } = req.body;
+            const video = new Video({
+                title,
+                description,
+                createdAt: Date.now(),
+                hasgtags: hashtags.split(",").map((word) => `#${word}`),
+                meta: {
+                views: 0,
+                rating: 0,
+                },
+            });
+            const dbVideo = await video.save();
+
+        아래 코드와 위 코드의 결과는 같다.
+
+        await video.create({
+        title,
+        description,
+        createdAt: Date.now(),
+        hasgtags: hashtags.split(",").map((word) => `#${word}`),
+        meta: {
+        views: 0,
+        rating: 0,
+        },
+        });
+
+    database는 우리가 데이터를 잘못 입력했을때 오류를 발생시켜줌.
