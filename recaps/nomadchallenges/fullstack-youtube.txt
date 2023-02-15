@@ -690,3 +690,35 @@
         });
 
     database는 우리가 데이터를 잘못 입력했을때 오류를 발생시켜줌.
+
+#6.17 Exceptions and Validation
+
+    mongoDB를 디테일하게 정의 할 수록 validation 하기 유용하다.
+
+    schema에 미리 default 값을 정해놓고 사용할 수 있다.
+    ex) Video.js
+
+        const videoSchema = new mongoose.Schema({
+        title: { type: String, required: true },
+        description: { type: String, required: true },
+        createdAt: { type: Date, required: true, default: Date.now },
+        hashtags: [{ type: String }],
+        meta: {
+            views: { type: Number, default: 0, required: true },
+            rating: { type: Number, default: 0, required: true },
+        },
+        });
+        
+    createdAt 에 date.now()가 아닌 date.now 로 쓰는 이유는 데이터가 생성될때만 실행되도록 하기 위해서
+
+#6.18 More Schema
+
+    https://mongoosejs.com/docs/schematypes.html
+
+    trim: true 옵션으로 string사이의 공백을 제거 할 수 있다.
+    ex) Video.js
+        title: { type: String, required: true, trim: true },
+
+    html와 db에서 모두 최소, 최대 글자를 제한해야 보안에 문제가 없음.
+
+    
