@@ -760,3 +760,21 @@
     hashtags가 #으로 시작하는지에 따른 처리
     ex) videoContoroller.js
         video.hashtags = hashtags.split(",").map((word) => word.startsWith('#') ? word :`#${word}`);
+
+#6.22 Edit Video part Three
+
+    mongoose의 function 중에 findByidAndUpdat() 로 찾은뒤 업데이트 해줄 수 있다.
+    ex) videoContoroller.js
+        await Video.findByIdAndUpdate(id, {
+            title,
+            description,
+            hasntags: hashtags
+            .split(",")
+            .map((word) => (word.startsWith("#") ? word : `#${word}`)),
+        });
+
+    대문자 Video는 Model, 소문자 video는 object
+
+    exist() function은 filter(어떤조건이든 가능)를 받고 존재 여부에 따라true 또는 false를 반환.
+    ex) videoContoroller.js
+        const video = await Video.exists({ _id: id });
