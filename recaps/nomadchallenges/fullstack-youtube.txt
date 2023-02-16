@@ -269,7 +269,7 @@
     videoRouter.get("/upload", upload);
     이 있으면 /view 로 가지않고 모두 /:id 로 처리됨. 순서 중요함.
 
-    # 정규식
+    # 정규식 (Regular Expression)
     \w+: 모든 문자, 숫자 선택
     \d+: 모든 숫자 선택
 
@@ -720,5 +720,41 @@
         title: { type: String, required: true, trim: true },
 
     html와 db에서 모두 최소, 최대 글자를 제한해야 보안에 문제가 없음.
+
+#6.19 Video Detail
+
+    Hexadecimal 은 16진수 ( 0~9 까지의 숫자와 6개의 기호(A-F)로 이루어짐)
+
+    정규식 연습 사이트 
+    https://regex101.com/
+
+    24자리 16진수 id 정규식 적용 
+    ex) videoRouter.get("/:id([0-9a-f]{24})", watch);
+
+    express의 findById function을 사용해 video를 받아올 수 있다.
+    ex) videoController.js
+        const video = await Video.findById(id);
+
+#6.20 Edit Video part One 
+
+    mongoose내부적으로 exec() 를 실행시키면  
+
+    누군가가 존재하지 않는 video id로 접근했을때의 처리가 필요함
+    ex) videoContoroller.js
+        if (video) {
+            return res.render("watch", { pageTitle: video.title, video });
+        }
+        return res.render("404", { pageTitle: "Video not found." });
+
+    니코쌤은 코딩할 때 에러를 먼저 처리함. 
+    if 구문에서는 return하고 아래에서는 에러가 나지 않았을때 코드를 계속해서 작성
+    ex) videoContoroller.js
+        if (!video) {
+            return res.render("404", { pageTitle: "Video not found." });
+        } 
+
+    배열을 하나의 스트링으로 합치는 function : join()
+
+#6.21 Edit Video part Two
 
     
