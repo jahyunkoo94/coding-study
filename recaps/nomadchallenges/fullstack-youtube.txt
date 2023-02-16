@@ -757,4 +757,6 @@
 
 #6.21 Edit Video part Two
 
-    
+    hashtags가 #으로 시작하는지에 따른 처리
+    ex) videoContoroller.js
+        video.hashtags = hashtags.split(",").map((word) => word.startsWith('#') ? word :`#${word}`);
