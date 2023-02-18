@@ -812,6 +812,7 @@
 
     7. db 컬렉션 안에 documents 내용 모두 제거하기 
     > db.collectionName.remove({})
+
     (현재 수업에서는 `db.videos.remove({})`)
     
 #6.24 Statics 
@@ -824,6 +825,10 @@
         return hashtags
             .split(",")
             .map((word) => (word.startsWith("#") ? word : `#${word}`));
+
+
+
+
         });
 
 #6.25 Delete Video
@@ -836,3 +841,23 @@
             return res.redirect("/");
         };
 
+#6.26 Search part One
+
+    Mongoose는 훌륭한 Query 엔진을 가지고 있다. 검색, 정렬 등 가능
+
+    sort() fucntion으로 정렬할 수 있다. desc : 내림차순,  asc : 오름차순
+    ex) videoContoroller.js
+        const videos = await Video.find({}).sort({ createdAt: "desc" });
+
+    # 전달된 value를 받는 방법
+        라우터로 지정한 :id -> req.params
+        pug파일에서 input으로 받은 내용 -> req.body(form이 POST일 때)
+        pug파일에서 input으로 받은 url내용 -> req.query (form이 GET일 때)   
+    
+        ex) videoContoroller.js
+            export const search = (req, res) => {
+                const { keyword } = req.query;
+                return res.render("search", { pageTitle: "Search" });
+            };
+
+    사용자가 처음 search 페이지에 올 때는 req.query에 값이 undefined
