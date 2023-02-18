@@ -870,10 +870,13 @@
     쿼리의 패턴 일치 문자열에 대한 정규식 기능을 제공합니다.
     https://docs.mongodb.com/manual/reference/operator/query/regex
 
+    문자열 중에 keyword가 포함되어있는 것을 찾는 코드. "i"는 대소문자 구분 하지않음을 뜻함.
     ex) videoContoroller.js
         videos = await Video.find({
             title: {
                 $regex: new RegExp(keyword, "i"),
         },
       
+#6.28 Conclusions
+
     
