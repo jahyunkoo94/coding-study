@@ -778,3 +778,50 @@
     exist() function은 filter(어떤조건이든 가능)를 받고 존재 여부에 따라true 또는 false를 반환.
     ex) videoContoroller.js
         const video = await Video.exists({ _id: id });
+
+#6.23 Middlewares 
+
+    Mongoose Middleware는 모델이 생성되기 전에 만들어줘야함.
+
+    아래와 같이 .pre() function으로 save 전에 실행시켜줄 미들웨어를 설정 할 수 있다.
+    ex) Video.js
+        videoSchema.pre("save", async function () {
+            console.log("We are about to save :", this);
+        });
+
+    cmd
+    1. 몽고 사용하기
+    > mongod > mongosh
+    
+    2. 내가 가진 db 보기 
+    > show dbs
+
+    3. 현재 사용 중인 db 확인 
+    > db
+
+    4. 사용할 db 선택하기 
+    > use dbName
+    (현재 수업에서는 `use wetube`)
+
+    5. db 컬렉션 보기 
+    > show collections
+
+    6. db 컬렉션 안에 documents 보기
+    >  db.collectionName.find()
+    (현재 수업에서는 `db.videos.find()`)
+
+    7. db 컬렉션 안에 documents 내용 모두 제거하기 
+    > db.collectionName.remove({})
+    (현재 수업에서는 `db.videos.remove({})`)
+    
+#6.24 Statics 
+
+    findByIdAndUpdate 는 middleware로 데이터에 접근 할 수가 없다.
+
+    hashtags 를 foramtting 하는 부분이 중복으로 나오고 있으니 Video Schema에 Static function으로 하면 편리할 것이다.
+    ex) Video.js
+        videoSchema.static("formatHashtags", function (hashtags) {
+        return hashtags
+            .split(",")
+            .map((word) => (word.startsWith("#") ? word : `#${word}`));
+        });
