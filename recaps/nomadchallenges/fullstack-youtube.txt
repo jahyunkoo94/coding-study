@@ -872,11 +872,88 @@
 
     문자열 중에 keyword가 포함되어있는 것을 찾는 코드. "i"는 대소문자 구분 하지않음을 뜻함.
     ex) videoContoroller.js
-        videos = await Video.find({
+        videos = await Video.fin({
             title: {
                 $regex: new RegExp(keyword, "i"),
         },
       
 #6.28 Conclusions
 
+#7 USER AUTHENTICATION
+
+#7.0 Create Account part One 
+
+    User Schema를 생성
+    User.js 
+
+#7.1 Create Account part Two
+
+    DeprecationWarning 경고가 뜨면
+    db.js - mongoose.connect() 에 useCreateIndex: true 추가해주면 됨.
+
+    현재 user db 확인방법
+    terminal -> mongod -> mongosh -> use wetube -> show collections -> db.users.find()
+
+#7.2 Creating Account part Three
+
+    노마드 코더 해시함수 5분 설명 : https://www.youtube.com/watch?v=67UwxR3ts2E
     
+    해시함수는 입력을 하면 출력값이 나오는데 출력값으로는 입력값을 알아낼 수 없고 같은 입력값으로는 같은 출력값이 나온다.
+
+    해시함수 테스트
+    https://emn178.github.io/online-tools/sha256.html
+
+    bcrypt 라는 해싱함수를 사용 할 것임 : https://www.npmjs.com/package/bcrypt
+    >> npm i bcrypt
+
+    rainbow rable 공격을 bcrypt가 막아줌.
+
+    bcrypt.hash(funtion, 해싱 횟수) 형태로 사용한다. promise를 지원한다.
+    ex) User.js
+    userSchema.pre("save", async function () {
+        this.password = await bcrypt.hash(this.password, 5);
+    });
+
+    위에서 this 는 user.create한 오브젝트를 의미함. 
+
+#7.3 Form Validation
+
+    이미 존재하는 email, username 으로 user를 생성했을 때 duplicate key error 발생.
+    
+
+    아래와 같이 사용시 username과 email이 두개 모두 중복일때만 true
+    ex) userController.js
+        const usernameExists = await User.exists({ username, email });
+
+    $or operator를 사용해서 조건을 여러개 체크
+    ex) userController.js
+        const exits = await User.exists({ $or: [[username], { email }] });
+
+#7.4 Status Codes 
+    상태코드
+    - 200(OK): 서버가 요청을 제대로 처리했다는 뜻이다. 이는 주로 서버가 요청한 페이지를 제공했다는 의미로 쓰인다.
+    - 400(Bad Request): 서버가 요청의 구문을 인식하지 못할 때 발생한다. 클라이언트 측에서 문제가 있을 때 주로 발생한다.
+    - 404(Not Found): 서버가 요청한 페이지를 찾을 수 없을 때 발생한다. 서버에 존재하지 않는 페이지에 대한 요청이 있을 경우 서버는 이 코드를 제공한다.
+    https://ko.wikipedia.org/wiki/HTTP_%EC%83%81%ED%83%9C_%EC%BD%94%EB%93%9C
+
+
+    response에 대한 HTTP 상태를 설정합니다. (status를 설정한다.)
+    res.status(code)
+    https://expressjs.com/ko/api.html#res.status
+    https://nodejs.org/api/http.html#http_response_statuscode
+
+    에러가 있을땐 res와 render사이에 4xx client error 코드를 보내서 사용한다
+    ex) userController.js
+        return res.status(400).render
+
+    브라우저는 방문한 웹사이트의 히스토리를 저장하는데 4xx 에러를 받으면 저장하지 않음.
+
+#7.5 Login part One
+
+    userController 에서 에러를 처리하고 더욱 안전하게 create 문에서 try catch 문을 사용 할 수 있다.
+    
+#7.6 Login part Two
+
+    login 할 때 입력한 password를 해싱해서 db의 password와 비교해서 유저 확인방법
+
+    bcrypt 에 내장된 함수 compare를 사용해서 비교한다.
