@@ -980,6 +980,24 @@
         );
 
     express-session middleware가 서버로 들어오는 모든사람을 알 수 있다.
-
     백엔드는 요청이 있을때 쿠키를 브라우저에게 보내고 브라우저는 새로고침 할 때마다 cookie를 자동으로 보낸다.
+
+#7.8 Sessions and Cookies part Two
+
+    브라우저마다 각각의 세션이 존재한다. 
+    서버가 세션을 생성한 기점은 middleware로 express-session을 추가했을때부터 생성됨.
+    세션은 서버측에서 제공해주는 데이터, 쿠키는 클라이언트측에서 저장하고 사용하는 데이터
+    req.sessiontStore() 사용했을때 한번은 undefined가 나온 이유가 세션은 서버에서 만들어줘야 하는데 클라이언트가 첫 요청때 세션을 가지고있을리 없으니 undefined이 나온거고 그 이후 요청부턴 첫번째 요청때 세션을 만들어서 넘겨줬으니 클라이언트가 해당 값을 쿠키에 저장하고 매 요청때마다 서버에게 전달
+    세션은 서버가 만들어서 제공해주다보니 서버가 재부팅되면 초기화 된다. (그래서 DB에 저장해서 관리를 한다는 소리. 실 운영에선 서버가 꺼지는 일은 없으니깐.)
+    세션의 값은 서버가 만들어주는 고유값이다보니 해당 값을 기준으로 클라이언트에서 요청한 건에 대해 유저를 특정지을 수 있다
+
+#7.9 Logged In User 
+
+    user 정보에 session을 추가
+    ex) userController.js
+        export const postLogin = async (req, res) => {
+            ...
+            req.session.loggedIn = true;
+            req.session.user = user;
+
     
