@@ -1000,4 +1000,31 @@
             req.session.loggedIn = true;
             req.session.user = user;
 
+#7.10 Logged In User part Two 
+
+    pug와 express가 res의 locals를 공유하도록 설정되어있음.
+
+    #localObject
+    locals.variable 로 localsd에 변수를 선언하면 variable은 전역변수라서 어디서든 접근이 가능함.
+
+    request 범위가 지정된 response 로컬 변수를 포함하는 객체이므로 request, response 주기동안 렌더링된 view에서만 사용할 수 있습니다.
+    (Pug나 EJS같은 템플릿 엔진에서 사용 가능하다는 의미)
+    이 속성은 request path, 인증된 사용자, 사용자 설정 등과 같은 request level의 정보를 노출하는 데 유용합니다.
+    https://expressjs.com/ko/api.html#res.locals
     
+    ex) server.js
+        app.use(function (req, res, next) {
+        res.locals.user = req.user
+        res.locals.authenticated = !req.user.anonymous
+        next()
+        })
+    
+#7.11 Recap
+
+    1. backend browser가 소통하는 방식
+    backend와 browser는 session ID를 저장하는데
+    browser는 cookie라는 것에 저장을 하고 다닌다 그래서 browser가 backend에 요청할때는 cookie를 보내고 backend에서 session ID의 유무를 확인한후 응답을 해주는 방식
+
+    2. 로그인 하는 방법
+    req.session을 통해 session(object로 이루어져있음)에 접근이 가능하다
+    loggedIn = true , user = user(앞서 변수로 선언한) 를 넣어줌으로 res.local으로 접근해서 가져올 수가 있다!
